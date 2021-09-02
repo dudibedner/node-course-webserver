@@ -21,16 +21,14 @@ app.use((req, res, next) => {
     next();
 });
 
+// For maintenance
+/*
 app.use((req, res, next) => {
-    if(new Date().getSeconds() % 5 !== 0) {
-        next();
-    }
-    else {
-        res.render('maintenance.hbs', {
-            pageTitle: 'Under Maintenance',
-        });
-    }
+    res.render('maintenance.hbs', {
+        pageTitle: 'Under Maintenance',
+    });
 });
+*/
 
 hbs.registerHelper('getCurrentYear', () => new Date().getFullYear());
 hbs.registerHelper('screamIt', (text) => {
@@ -48,6 +46,12 @@ app.get('/', (req, res) => {
 app.get('/about', (req, res) => {
     res.render('about.hbs', {
         pageTitle: 'About Page',
+    });
+});
+
+app.get('/projects', (req, res) => {
+    res.render('projects.hbs', {
+        pageTitle: 'Projects Page',
     });
 });
 
